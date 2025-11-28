@@ -48,3 +48,40 @@ INSERT INTO aluno  values
   (7,"Katia Garcia", "Palmares",962534122, '1991-10-19', 5 , 145.65),
   (8,"Júlio Mercedes", "Palmares", 981727263, '1999-01-01', null , 365.36),
   (9,"Fátima Silva", "Jaboatão", 981722639, '1986-09-04', null , 154.69);
+
+
+-- Resolução das questões Dia 28/11/2025
+
+select * from curso;
+
+-- 1°)
+
+select SUM(mensalidade) from aluno;
+
+-- 2°)
+
+select AVG(mensalidade) as "media.mensalidade" from aluno where cod_curso in (
+select codigo from curso where nome in("Informática para Internet", "Enfermagem")); -- retorna as medias 
+
+-- 3°)
+
+select COUNT(nome_coordenador) as "Qtde.cursos" from curso;
+
+select count(1) from curso;
+
+select *, "ATIVO" from curso;
+
+-- 4°)
+
+select MAX(vagas) as "MAX",  MIN(vagas) as "MIN"  from curso;
+
+-- 5°)
+-- Group BY serve para categorizar colunas
+select cidade_endereco, count(*) from aluno group by cidade_endereco;
+
+-- 6°)
+select nome, count(*) from curso where nome_coordenador is null group by nome;
+
+-- 7°)
+
+select year(data_nascimento), count(*) from aluno group by year(data_nascimento);
